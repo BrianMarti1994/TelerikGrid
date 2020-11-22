@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SchoolModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'School.dbo.Student' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Student">
+    <Key>
+      <PropertyRef Name="StudentID" />
+      <PropertyRef Name="StudentName" />
+    </Key>
+    <Property Name="StudentID" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="StudentName" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="StudentAddress" Type="varchar" MaxLength="50" />
+    <Property Name="StudentSTD" Type="varchar" MaxLength="5" />
+    <Property Name="EmergencyContact" Type="varchar" MaxLength="20" />
+    <Property Name="StudentSportsHouse" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityContainer Name="SchoolModelStoreContainer">
+    <EntitySet Name="Student" EntityType="Self.Student" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Student].[StudentID] AS [StudentID], 
+    [Student].[StudentName] AS [StudentName], 
+    [Student].[StudentAddress] AS [StudentAddress], 
+    [Student].[StudentSTD] AS [StudentSTD], 
+    [Student].[EmergencyContact] AS [EmergencyContact], 
+    [Student].[StudentSportsHouse] AS [StudentSportsHouse]
+    FROM [dbo].[Student] AS [Student]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

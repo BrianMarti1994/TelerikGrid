@@ -1,0 +1,26 @@
+﻿
+@using Telerik.Web.Mvc.UI;
+@model IEnumerable<TelerikGrid.Student>
+
+
+
+@{
+    Html.Telerik().Grid(Model)
+        .Name("MyGrid")
+        .Columns(col =>
+        {
+            col.Bound(o => o.StudentID).Width(120).Groupable(false);
+            col.Bound(o => o.StudentName).Width(120).Groupable(false);
+            col.Bound(o => o.StudentSTD).Groupable(false);
+            col.Bound(o => o.StudentAddress).Groupable(false); 
+            col.Bound(o => o.EmergencyContact).Groupable(false);
+        })
+        .Pageable(a => a.PageSize(5)) // for enable paging
+        .Groupable() // for enable grouping
+        .Sortable() // for sorting
+        .Filterable() // for Filtering
+        .Render();
+}
+
+@(Html.Telerik().StyleSheetRegistrar().DefaultGroup(group=> group.Add("telerik.common.css").Add("telerik.windows7.css").Combined(true).Compress(true)))
+@(Html.Telerik().ScriptRegistrar())
